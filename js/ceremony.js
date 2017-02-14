@@ -32,16 +32,16 @@ ceremony.speech.speakIt.lang = "en-US";
 
 $(document).ready(function() {
   console.log(ceremony.speech.speechArray);
+  //cancel on load to clear out any leftover speech from the last time this ran
   speechSynthesis.cancel();
   getVoices();
   setupUI();
-  //speaker();
 });
 
+//parses text to be spoken and sets up a buffer to get around the problem of speechUtterance crapping out with longer strings
 function speaker() {
   console.log(ceremony.speech.speechBuffer.length);
   console.log(ceremony.speech.speechArray.length);
-  //uses a speech buffer to get around the problem of speechUtterance crapping out with longer strings
   //first check if there's strings in the speech buffer that need to be said before proceeding to the next string in the speech array
   if (ceremony.speech.speechBuffer.length > 0) {
     //very brief pause and then the next sentence in the speech buffer
@@ -76,6 +76,7 @@ function speaks(word) {
   }
 }
 
+//sets up...UI
 function setupUI() {
   $("#slider").slider();
   $("#action").click(function() {
@@ -99,10 +100,12 @@ function setupUI() {
   });
 }
 
+//retrieve voice options
 function getVoices(){
   
 }
 
+//timer
 function sessionTimer(){
   ceremony.session.timerCounter++;
   $("#timer").text(ceremony.session.timerCounter);
