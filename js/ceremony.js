@@ -12,7 +12,7 @@ ceremony.session.timer = "";
 //settings that can be modified
 ceremony.settings = {};
 ceremony.settings.shortPause = 900;
-ceremony.settings.longPause = 3500;
+ceremony.settings.longPause = 900;
 ceremony.speech = {};
 //global state variables for the body using the app
 ceremony.state = {};
@@ -32,6 +32,7 @@ ceremony.speech.speakIt.lang = "en-US";
 
 $(document).ready(function() {
   console.log(ceremony.speech.speechArray);
+  speechSynthesis.cancel();
   getVoices();
   setupUI();
   //speaker();
