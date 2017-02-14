@@ -12,15 +12,26 @@
 }
 
 select, button{
+	border-radius:.2em;
 	font-size:.3em;
+	opacity:.7;
+	background: none;
+}
+
+select {
+	border: none;
 }
 
 #output{
 	font-size:.3em;
 }
 
-#title{
+
+#timer{
+	display:none;
 }
+
+textarea, input, button, select { outline: none; }
 
 /* https://www.gradient-animator.com/ */
 body{

@@ -34,6 +34,7 @@ $(document).ready(function() {
   console.log(ceremony.speech.speechArray);
   //cancel on load to clear out any leftover speech from the last time this ran
   speechSynthesis.cancel();
+  //make select buttons look prettier
   getVoices();
   setupUI();
 });
@@ -78,25 +79,34 @@ function speaks(word) {
 
 //sets up...UI
 function setupUI() {
-  $("#slider").slider();
   $("#action").click(function() {
     if(ceremony.session.active == false){
       ceremony.session.active = true;
       if (ceremony.session.started == false){
         ceremony.session.started = true;
-        //ceremony.session.timer = setInterval(sessionTimer,1000);
+        ceremony.session.timer = setInterval(sessionTimer,1000);
         speaker();
+        fader();
       } else {
         speechSynthesis.resume(); 
-        //ceremony.session.timer = setInterval(sessionTimer,1000);
+        $("#timer").hide();
+        ceremony.session.timer = setInterval(sessionTimer,1000);
       }
       $("#action").text("pause");
     } else if (ceremony.session.active == true){
       speechSynthesis.pause();
-      //clearInterval(ceremony.session.timer);
+      clearInterval(ceremony.session.timer);
+      $("#timer").show();
       ceremony.session.active = false;
       $("#action").text("play");
     }
+  });
+}
+
+//fade out UI elements
+function fader(){
+  $("#title,#voices,#timerChooser,#action").fadeOut( "slow", function() {
+    $("#action").fadeIn( "slow", function() {});
   });
 }
 
@@ -108,5 +118,6 @@ function getVoices(){
 //timer
 function sessionTimer(){
   ceremony.session.timerCounter++;
+  console.log(ceremony.session.timerCounter);
   $("#timer").text(ceremony.session.timerCounter);
 }
