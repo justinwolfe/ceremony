@@ -12,7 +12,7 @@ ceremony.session.timer = "";
 //settings that can be modified
 ceremony.settings = {};
 ceremony.settings.shortPause = 900;
-ceremony.settings.longPause = 900;
+ceremony.settings.longPause = 3500;
 ceremony.speech = {};
 //global state variables for the body using the app
 ceremony.state = {};
@@ -105,8 +105,8 @@ function setupUI() {
 
 //fade out UI elements
 function fader(){
-  $("#title,#voices,#timerChooser,#action").fadeOut( "slow", function() {
-    $("#action").fadeIn( "slow", function() {});
+  $("#title,#voices,#timerChooser,#action").fadeOut(ceremony.settings.longPause, function() {
+    $("#action").fadeIn(ceremony.settings.longPause, function() {});
   });
 }
 
