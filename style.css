@@ -28,10 +28,11 @@ select {
 }
 
 #glyphs{
-	opacity:.7;
 }
 
-
+.glyph:hover{
+	opacity:.7;
+}
 
 #timer{
 	display:none;
