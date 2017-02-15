@@ -13,40 +13,43 @@
 	<div id="glyphs">
 	  <fieldset>
 	  	<span class="glyph">
-	  		<input type="radio" name="radio-1" id="radio-1" class="hide">
+	  		<input type="radio" name="radio-1" id="cer-1" class="hide">
 	  		<label for="radio-1" class="glyph">✿</label>
 	  	</span>
 	  	<span class="glyph">
-	  		<input type="radio" name="radio-1" id="radio-2" class="hide">
+	  		<input type="radio" name="radio-1" id="cer-2" class="hide">
 	  		<label for="radio-2" class="glyph">◐</label>
 	  	</span>
 	  	<span class="glyph">
-	  		<input type="radio" name="radio-1" id="radio-3" class="hide">
+	  		<input type="radio" name="radio-1" id="cer-3" class="hide">
 	  		<label for="radio-3" class="glyph">⧖</label>
 	  	</span>
 	  	<span class="glyph">
-	  		<input type="radio" name="radio-1" id="radio-4" class="hide">
+	  		<input type="radio" name="radio-1" id="cer-4" class="hide">
 	  		<label for="radio-4" class="glyph">⬢</label>
 	  	</span>
 	  	<span class="glyph">
-	  		<input type="radio" name="radio-1" id="radio-5" class="hide">
+	  		<input type="radio" name="radio-1" id="cer-5" class="hide">
 	  		<label for="radio-5" class="glyph">π</label>
 	  	</span>	  		  		  	
 	  </fieldset>  
 	</div>
-	<select id="voices">
-	  <option value="default" selected>default voice</option>
-	</select>
-	<select id="timerChooser">
-	  <option value="5" selected>5 min</option>
-	  <option value="10">10 min</option>
-	  <option value="15">15 min</option>
-	  <option value="20">20 min</option>
-	</select>
-	<button id="action">start</button>
-	<div id="timer"></div>
+	<div id="description">choose a sigil</div>
+	<div id="controls">
+		<select id="voices">
+		  <option value="default" selected>default voice</option>
+		</select>
+		<select id="timerChooser">
+		  <option value="5" selected>5 min</option>
+		  <option value="10">10 min</option>
+		  <option value="15">15 min</option>
+		  <option value="20">20 min</option>
+		</select>
+		<button id="action">start</button>
+		<div id="timer"></div>
+	</div>
 </div>
-
+<link rel="stylesheet" type="text/css" href="style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src='js/gens.js'></script>
@@ -55,7 +58,6 @@
 <script src='js/process.js'></script>
 <script src="js/ceremony.js"></script>
 <script src="https://use.fontawesome.com/2125d470c2.js"></script>
-<link rel="stylesheet" type="text/css" href="style.css">
 <link href="https://fonts.googleapis.com/css?family=Hind" rel="stylesheet">
 <script src="jqui/jquery-ui.min.js"></script>
 </body>

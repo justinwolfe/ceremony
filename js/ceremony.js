@@ -29,6 +29,13 @@ ceremony.speech.speakIt.rate = .8;
 ceremony.speech.speakIt.pitch = 1;
 ceremony.speech.speakIt.lang = "en-US";
 //ceremony.speech.speakIt.voiceURI = "";
+ceremony.descriptions = {
+  "cer-1":"(something mystical about the first one)",
+  "cer-2":"(another mystical thing about the second one)",
+  "cer-3":"(something else mystical about the third one)",
+  "cer-4":"(you know i've got something mystical about the fourth one)",
+  "cer-5":"(concluding with the fifth one, super mystical)"
+}
 
 $(document).ready(function() {
   console.log(ceremony.speech.speechArray);
@@ -79,6 +86,21 @@ function speaks(word) {
 
 //sets up...UI
 function setupUI() {
+    $("label.glyph").hover(function() {
+      console.log("hovered glyph");
+      console.log($(this).prev().attr("id"));
+      var choice = $(this).prev().attr("id");
+      console.log(ceremony.descriptions[choice]);
+      $("#description").text(ceremony.descriptions[choice])
+    });
+  $("label.glyph").click(function() {
+    console.log("clicked glyph");
+    console.log($(this)[0].innerHTML);
+    console.log($(this).prev());
+    $('#controls').css('visibility', 'visible');
+    $('#controls').animate({opacity: 1}, ceremony.settings.shortPause, function(){
+    });
+  })
   $("#action").click(function() {
     if(ceremony.session.active == false){
       ceremony.session.active = true;
@@ -105,7 +127,7 @@ function setupUI() {
 
 //fade out UI elements
 function fader(){
-  $("#title,#voices,#timerChooser,#action").fadeOut(ceremony.settings.longPause, function() {
+  $("#title,#voices,#timerChooser,#action,#glyphs").fadeOut(ceremony.settings.longPause, function() {
     $("#action").fadeIn(ceremony.settings.longPause, function() {});
   });
 }
