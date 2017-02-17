@@ -25,6 +25,7 @@ ceremony.state.position = "standing";
 ceremony.speech.speechArray = processSeq(seq.test);
 ceremony.speech.speechBuffer = [];
 ceremony.speech.speakIt = new SpeechSynthesisUtterance();
+ceremony.speech.voiceList = speechSynthesis.getVoices();
 ceremony.speech.speakIt.rate = .8;
 ceremony.speech.speakIt.pitch = 1;
 ceremony.speech.speakIt.lang = "en-US";
@@ -39,10 +40,10 @@ ceremony.descriptions = {
 
 $(document).ready(function() {
   console.log(ceremony.speech.speechArray);
+  getVoices();
   //cancel on load to clear out any leftover speech from the last time this ran
   speechSynthesis.cancel();
   //make select buttons look prettier
-  getVoices();
   setupUI();
 });
 
@@ -101,6 +102,11 @@ function setupUI() {
     $('#controls').animate({opacity: 1}, ceremony.settings.shortPause, function(){
     });
   })
+  $("#voices").change(function(e) {
+    var voiceIndex = this.value;
+    console.log(voiceIndex);
+    ceremony.speech.speakIt.voice = ceremony.speech.voiceList[voiceIndex];
+  });
   $("#action").click(function() {
     if(ceremony.session.active == false){
       ceremony.session.active = true;
@@ -134,7 +140,11 @@ function fader(){
 
 //retrieve voice options
 function getVoices(){
-  
+  ceremony.speech.voiceList = speechSynthesis.getVoices();
+  console.log(ceremony.speech.voiceList);
+  for(var i=0; i<ceremony.speech.voiceList.length; i++){
+    $("#voices").append("<option value='"+i+"'>" + ceremony.speech.voiceList[i].name + "</option>");
+  }
 }
 
 //timer
