@@ -127,7 +127,7 @@ function setupUI() {
 
 //fade out UI elements
 function fader(){
-  $("#title,#voices,#timerChooser,#action,#glyphs").fadeOut(ceremony.settings.longPause, function() {
+  $("#title,#voices,#timerChooser,#action,#glyphs,#description").fadeOut(ceremony.settings.longPause, function() {
     $("#action").fadeIn(ceremony.settings.longPause, function() {});
   });
 }
