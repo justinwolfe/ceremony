@@ -29,7 +29,6 @@ ceremony.speech.voiceList = speechSynthesis.getVoices();
 ceremony.speech.speakIt.rate = .8;
 ceremony.speech.speakIt.pitch = 1;
 ceremony.speech.speakIt.lang = "en-US";
-//ceremony.speech.speakIt.voiceURI = "";
 ceremony.descriptions = {
   "cer-1":"(something mystical about the first one)",
   "cer-2":"(another mystical thing about the second one)",
@@ -124,7 +123,7 @@ function setupUI() {
     } else if (ceremony.session.active == true){
       speechSynthesis.pause();
       clearInterval(ceremony.session.timer);
-      $("#timer").show();
+      $("#timer").css("display","inline-block");
       ceremony.session.active = false;
       $("#action").text("play");
     }
@@ -141,9 +140,11 @@ function fader(){
 //retrieve voice options
 function getVoices(){
   ceremony.speech.voiceList = speechSynthesis.getVoices();
-  console.log(ceremony.speech.voiceList);
   for(var i=0; i<ceremony.speech.voiceList.length; i++){
-    $("#voices").append("<option value='"+i+"'>" + ceremony.speech.voiceList[i].name + "</option>");
+    //only get english voices
+    if(ceremony.speech.voiceList[i].lang.startsWith("en")==true){
+      $("#voices").append("<option value='"+i+"'>" + ceremony.speech.voiceList[i].name + "</option>");
+    }
   }
 }
 

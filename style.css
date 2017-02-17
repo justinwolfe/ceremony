@@ -48,7 +48,9 @@ select {
 }
 
 #timer{
-	display:none;
+	display:inline-block;
+	visibility:hidden;
+	font-size:.3em;
 }
 
 span:not(#foo) > input:checked + label {
